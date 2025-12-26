@@ -1,0 +1,861 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dibujos en Vidrio - Vidrieras Artísticas</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', sans-serif;
+            color: #2a2a2a;
+            background-color: #ffffff;
+            line-height: 1.6;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* Hero */
+        .hero {
+            position: relative;
+            width: 100%;
+            height: 100vh;
+            min-height: 600px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+
+        .hero-image {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+        }
+
+        .hero-placeholder {
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, #3a3a3a 0%, #2a2a2a 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #888;
+            font-size: 1.2rem;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            text-align: center;
+            color: #ffffff;
+            padding: 2rem;
+            max-width: 800px;
+        }
+
+        .hero-title {
+            font-size: 3rem;
+            font-weight: 400;
+            margin-bottom: 1.5rem;
+            text-transform: lowercase;
+            letter-spacing: 0.05em;
+        }
+
+        .hero-subtitle {
+            font-size: 1.1rem;
+            margin-bottom: 2.5rem;
+            line-height: 1.8;
+            opacity: 0.95;
+        }
+
+        .hero-button {
+            display: inline-block;
+            padding: 1rem 2.5rem;
+            background-color: #4a4a4a;
+            color: #ffffff;
+            text-decoration: none;
+            border-radius: 4px;
+            font-size: 1rem;
+            text-transform: lowercase;
+            transition: background-color 0.3s ease;
+        }
+
+        .hero-button:hover {
+            background-color: #5a5a5a;
+        }
+
+        /* Servicios */
+        .servicios {
+            padding: 5rem 2rem;
+            background-color: #fafafa;
+        }
+
+        .servicios-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .servicios-title {
+            font-size: 2.5rem;
+            font-weight: 400;
+            text-align: center;
+            margin-bottom: 1rem;
+            color: #2a2a2a;
+            text-transform: lowercase;
+        }
+
+        .servicios-subtitle {
+            font-size: 1rem;
+            text-align: center;
+            color: #666;
+            margin-bottom: 3rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .servicios-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2rem;
+        }
+
+        .servicio-card {
+            background-color: #ffffff;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .servicio-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+        }
+
+        .servicio-image {
+            width: 100%;
+            height: 300px;
+            overflow: hidden;
+            background-color: #e0e0e0;
+        }
+
+        .servicio-placeholder {
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, #4a4a4a 0%, #3a3a3a 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #aaa;
+            font-size: 0.9rem;
+            text-align: center;
+            padding: 1rem;
+        }
+
+        .servicio-content {
+            padding: 2rem;
+        }
+
+        .servicio-titulo {
+            font-size: 1.5rem;
+            font-weight: 400;
+            margin-bottom: 1rem;
+            color: #2a2a2a;
+            text-transform: lowercase;
+        }
+
+        .servicio-descripcion {
+            font-size: 0.95rem;
+            color: #666;
+            line-height: 1.7;
+        }
+
+        /* Galería */
+        .galeria {
+            padding: 5rem 2rem;
+            background-color: #ffffff;
+        }
+
+        .galeria-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .galeria-title {
+            font-size: 2.5rem;
+            font-weight: 400;
+            text-align: center;
+            margin-bottom: 1rem;
+            color: #2a2a2a;
+            text-transform: lowercase;
+        }
+
+        .galeria-subtitle {
+            font-size: 1rem;
+            text-align: center;
+            color: #666;
+            margin-bottom: 3rem;
+        }
+
+        .galeria-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .galeria-item {
+            position: relative;
+            width: 100%;
+            height: 300px;
+            overflow: hidden;
+            border-radius: 8px;
+            cursor: pointer;
+            background-color: #e0e0e0;
+        }
+
+        .galeria-placeholder {
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, #4a4a4a 0%, #3a3a3a 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #aaa;
+            font-size: 0.9rem;
+        }
+
+        .galeria-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(to top, rgba(0, 0, 0, 0.7), transparent);
+            padding: 1.5rem;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .galeria-item:hover .galeria-overlay {
+            opacity: 1;
+        }
+
+        .galeria-nombre {
+            color: #ffffff;
+            font-size: 1rem;
+            text-transform: lowercase;
+        }
+
+        /* Modal */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.9);
+            align-items: center;
+            justify-content: center;
+            z-index: 1000;
+            padding: 2rem;
+        }
+
+        .modal.active {
+            display: flex;
+        }
+
+        .modal-content {
+            position: relative;
+            max-width: 90vw;
+            max-height: 90vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .modal-close {
+            position: absolute;
+            top: -40px;
+            right: 0;
+            background: none;
+            border: none;
+            color: #ffffff;
+            font-size: 3rem;
+            cursor: pointer;
+            line-height: 1;
+            padding: 0;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .modal-close:hover {
+            opacity: 0.7;
+        }
+
+        .modal-nav {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(255, 255, 255, 0.2);
+            border: none;
+            color: #ffffff;
+            font-size: 3rem;
+            cursor: pointer;
+            width: 50px;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            transition: background-color 0.3s ease;
+        }
+
+        .modal-nav:hover {
+            background: rgba(255, 255, 255, 0.3);
+        }
+
+        .modal-nav-prev {
+            left: -60px;
+        }
+
+        .modal-nav-next {
+            right: -60px;
+        }
+
+        .modal-placeholder {
+            width: 600px;
+            height: 400px;
+            background: linear-gradient(135deg, #4a4a4a 0%, #3a3a3a 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #aaa;
+            font-size: 1.2rem;
+            border-radius: 8px;
+        }
+
+        .modal-nombre {
+            color: #ffffff;
+            font-size: 1.2rem;
+            margin-top: 1.5rem;
+            text-align: center;
+            text-transform: lowercase;
+        }
+
+        /* Contacto */
+        .contacto {
+            padding: 5rem 2rem;
+            background-color: #fafafa;
+        }
+
+        .contacto-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .contacto-title {
+            font-size: 2.5rem;
+            font-weight: 400;
+            text-align: center;
+            margin-bottom: 1rem;
+            color: #2a2a2a;
+            text-transform: lowercase;
+        }
+
+        .contacto-subtitle {
+            font-size: 1rem;
+            text-align: center;
+            color: #666;
+            margin-bottom: 3rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .contacto-content {
+            display: grid;
+            grid-template-columns: 1fr 1.5fr;
+            gap: 3rem;
+            align-items: start;
+        }
+
+        .contacto-info-title {
+            font-size: 1.5rem;
+            font-weight: 400;
+            margin-bottom: 2rem;
+            color: #2a2a2a;
+            text-transform: lowercase;
+        }
+
+        .contacto-datos {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+        }
+
+        .contacto-dato {
+            display: flex;
+            gap: 1rem;
+            align-items: flex-start;
+        }
+
+        .contacto-icon {
+            font-size: 1.5rem;
+            flex-shrink: 0;
+        }
+
+        .contacto-dato-label {
+            font-size: 0.85rem;
+            color: #888;
+            margin-bottom: 0.25rem;
+            text-transform: lowercase;
+        }
+
+        .contacto-dato-valor {
+            font-size: 1rem;
+            color: #2a2a2a;
+        }
+
+        .contacto-form {
+            background-color: #ffffff;
+            padding: 2.5rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            font-size: 0.9rem;
+            color: #2a2a2a;
+            margin-bottom: 0.5rem;
+            text-transform: lowercase;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 0.75rem;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 1rem;
+            font-family: inherit;
+            color: #2a2a2a;
+            background-color: #ffffff;
+            transition: border-color 0.3s ease;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: #4a4a4a;
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+
+        .form-submit {
+            width: 100%;
+            padding: 1rem;
+            background-color: #4a4a4a;
+            color: #ffffff;
+            border: none;
+            border-radius: 4px;
+            font-size: 1rem;
+            text-transform: lowercase;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .form-submit:hover {
+            background-color: #5a5a5a;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero {
+                height: 80vh;
+                min-height: 500px;
+            }
+
+            .hero-title {
+                font-size: 2rem;
+            }
+
+            .hero-subtitle {
+                font-size: 0.95rem;
+            }
+
+            .hero-button {
+                padding: 0.85rem 2rem;
+                font-size: 0.9rem;
+            }
+
+            .servicios {
+                padding: 3rem 1.5rem;
+            }
+
+            .servicios-title {
+                font-size: 2rem;
+            }
+
+            .servicios-subtitle {
+                font-size: 0.9rem;
+            }
+
+            .servicios-grid {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+
+            .servicio-image {
+                height: 200px;
+            }
+
+            .servicio-content {
+                padding: 1.5rem;
+            }
+
+            .servicio-titulo {
+                font-size: 1.3rem;
+            }
+
+            .servicio-descripcion {
+                font-size: 0.9rem;
+            }
+
+            .galeria {
+                padding: 3rem 1.5rem;
+            }
+
+            .galeria-title {
+                font-size: 2rem;
+            }
+
+            .galeria-subtitle {
+                font-size: 0.9rem;
+            }
+
+            .galeria-grid {
+                grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+                gap: 1rem;
+            }
+
+            .galeria-item {
+                height: 200px;
+            }
+
+            .modal {
+                padding: 1rem;
+            }
+
+            .modal-nav {
+                font-size: 2rem;
+                width: 40px;
+                height: 40px;
+            }
+
+            .modal-nav-prev {
+                left: 10px;
+            }
+
+            .modal-nav-next {
+                right: 10px;
+            }
+
+            .modal-placeholder {
+                width: 100%;
+                height: 300px;
+            }
+
+            .contacto {
+                padding: 3rem 1.5rem;
+            }
+
+            .contacto-title {
+                font-size: 2rem;
+            }
+
+            .contacto-subtitle {
+                font-size: 0.9rem;
+            }
+
+            .contacto-content {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .contacto-form {
+                padding: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Hero -->
+    <section class="hero">
+        <div class="hero-image">
+            <div class="hero-placeholder">
+                <span>Imagen de bienvenida</span>
+            </div>
+        </div>
+        <div class="hero-content">
+            <h1 class="hero-title">dale vida a tu local</h1>
+            <p class="hero-subtitle">
+                Transformamos vidrieras en obras de arte que atraen clientes y cuentan la historia de tu negocio
+            </p>
+            <a href="#servicios" class="hero-button">
+                conocé nuestros servicios
+            </a>
+        </div>
+    </section>
+
+    <!-- Servicios -->
+    <section id="servicios" class="servicios">
+        <div class="servicios-container">
+            <h2 class="servicios-title">nuestros servicios</h2>
+            <p class="servicios-subtitle">
+                Ofrecemos soluciones completas para transformar la vidriera de tu local en un imán de clientes
+            </p>
+            <div class="servicios-grid">
+                <div class="servicio-card">
+                    <div class="servicio-image">
+                        <div class="servicio-placeholder">
+                            <span>diseños personalizados</span>
+                        </div>
+                    </div>
+                    <div class="servicio-content">
+                        <h3 class="servicio-titulo">diseños personalizados</h3>
+                        <p class="servicio-descripcion">Creamos diseños únicos adaptados a la identidad de tu marca y las necesidades de tu negocio. Trabajamos junto a vos para plasmar tu visión en la vidriera.</p>
+                    </div>
+                </div>
+                <div class="servicio-card">
+                    <div class="servicio-image">
+                        <div class="servicio-placeholder">
+                            <span>decoración estacional</span>
+                        </div>
+                    </div>
+                    <div class="servicio-content">
+                        <h3 class="servicio-titulo">decoración estacional</h3>
+                        <p class="servicio-descripcion">Actualizamos tu vidriera según las temporadas y festividades. Mantenemos tu local siempre actualizado y atractivo para tus clientes.</p>
+                    </div>
+                </div>
+                <div class="servicio-card">
+                    <div class="servicio-image">
+                        <div class="servicio-placeholder">
+                            <span>promociones y ofertas</span>
+                        </div>
+                    </div>
+                    <div class="servicio-content">
+                        <h3 class="servicio-titulo">promociones y ofertas</h3>
+                        <p class="servicio-descripcion">Destacamos tus promociones y ofertas especiales de manera creativa. Aumentamos la visibilidad de tus campañas comerciales.</p>
+                    </div>
+                </div>
+                <div class="servicio-card">
+                    <div class="servicio-image">
+                        <div class="servicio-placeholder">
+                            <span>mantenimiento y actualización</span>
+                        </div>
+                    </div>
+                    <div class="servicio-content">
+                        <h3 class="servicio-titulo">mantenimiento y actualización</h3>
+                        <p class="servicio-descripcion">Ofrecemos servicios de mantenimiento y actualización periódica de tus vidrieras. Mantenemos tu imagen siempre fresca y profesional.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Galería -->
+    <section class="galeria">
+        <div class="galeria-container">
+            <h2 class="galeria-title">nuestros trabajos</h2>
+            <p class="galeria-subtitle">
+                Algunos de los locales que confiaron en nosotros
+            </p>
+            <div class="galeria-grid">
+                <div class="galeria-item" onclick="abrirModal(1)">
+                    <div class="galeria-placeholder">
+                        <span>Local 1</span>
+                    </div>
+                    <div class="galeria-overlay">
+                        <span class="galeria-nombre">Local 1</span>
+                    </div>
+                </div>
+                <div class="galeria-item" onclick="abrirModal(2)">
+                    <div class="galeria-placeholder">
+                        <span>Local 2</span>
+                    </div>
+                    <div class="galeria-overlay">
+                        <span class="galeria-nombre">Local 2</span>
+                    </div>
+                </div>
+                <div class="galeria-item" onclick="abrirModal(3)">
+                    <div class="galeria-placeholder">
+                        <span>Local 3</span>
+                    </div>
+                    <div class="galeria-overlay">
+                        <span class="galeria-nombre">Local 3</span>
+                    </div>
+                </div>
+                <div class="galeria-item" onclick="abrirModal(4)">
+                    <div class="galeria-placeholder">
+                        <span>Local 4</span>
+                    </div>
+                    <div class="galeria-overlay">
+                        <span class="galeria-nombre">Local 4</span>
+                    </div>
+                </div>
+                <div class="galeria-item" onclick="abrirModal(5)">
+                    <div class="galeria-placeholder">
+                        <span>Local 5</span>
+                    </div>
+                    <div class="galeria-overlay">
+                        <span class="galeria-nombre">Local 5</span>
+                    </div>
+                </div>
+                <div class="galeria-item" onclick="abrirModal(6)">
+                    <div class="galeria-placeholder">
+                        <span>Local 6</span>
+                    </div>
+                    <div class="galeria-overlay">
+                        <span class="galeria-nombre">Local 6</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Modal -->
+    <div id="modal" class="modal" onclick="cerrarModal()">
+        <div class="modal-content" onclick="event.stopPropagation()">
+            <button class="modal-close" onclick="cerrarModal()">×</button>
+            <button class="modal-nav modal-nav-prev" onclick="cambiarImagen('anterior')">‹</button>
+            <button class="modal-nav modal-nav-next" onclick="cambiarImagen('siguiente')">›</button>
+            <div class="modal-placeholder">
+                <span id="modal-nombre-texto">Local 1</span>
+            </div>
+            <p class="modal-nombre" id="modal-nombre">Local 1</p>
+        </div>
+    </div>
+
+    <!-- Contacto -->
+    <section id="contacto" class="contacto">
+        <div class="contacto-container">
+            <h2 class="contacto-title">contactanos</h2>
+            <p class="contacto-subtitle">
+                ¿Listo para transformar tu vidriera? Dejanos tus datos y nos pondremos en contacto
+            </p>
+            <div class="contacto-content">
+                <div class="contacto-info">
+                    <h3 class="contacto-info-title">información de contacto</h3>
+                    <div class="contacto-datos">
+                        <div class="contacto-dato">
+                            <span class="contacto-icon">📞</span>
+                            <div>
+                                <p class="contacto-dato-label">teléfono</p>
+                                <p class="contacto-dato-valor">+54 11 1234-5678</p>
+                            </div>
+                        </div>
+                        <div class="contacto-dato">
+                            <span class="contacto-icon">✉️</span>
+                            <div>
+                                <p class="contacto-dato-label">email</p>
+                                <p class="contacto-dato-valor">info@dibujosenvidrio.com</p>
+                            </div>
+                        </div>
+                        <div class="contacto-dato">
+                            <span class="contacto-icon">📍</span>
+                            <div>
+                                <p class="contacto-dato-label">ubicación</p>
+                                <p class="contacto-dato-valor">Buenos Aires, Argentina</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <form class="contacto-form" onsubmit="enviarFormulario(event)">
+                    <div class="form-group">
+                        <label for="nombre">nombre</label>
+                        <input type="text" id="nombre" name="nombre" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">email</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="telefono">teléfono</label>
+                        <input type="tel" id="telefono" name="telefono">
+                    </div>
+                    <div class="form-group">
+                        <label for="mensaje">mensaje</label>
+                        <textarea id="mensaje" name="mensaje" rows="5" required></textarea>
+                    </div>
+                    <button type="submit" class="form-submit">enviar mensaje</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        let imagenActual = 1;
+        const totalImagenes = 6;
+
+        function abrirModal(numero) {
+            imagenActual = numero;
+            document.getElementById('modal').classList.add('active');
+            actualizarModal();
+        }
+
+        function cerrarModal() {
+            document.getElementById('modal').classList.remove('active');
+        }
+
+        function cambiarImagen(direccion) {
+            if (direccion === 'siguiente') {
+                imagenActual = (imagenActual % totalImagenes) + 1;
+            } else {
+                imagenActual = (imagenActual - 2 + totalImagenes) % totalImagenes + 1;
+            }
+            actualizarModal();
+        }
+
+        function actualizarModal() {
+            document.getElementById('modal-nombre-texto').textContent = 'Local ' + imagenActual;
+            document.getElementById('modal-nombre').textContent = 'Local ' + imagenActual;
+        }
+
+        function enviarFormulario(event) {
+            event.preventDefault();
+            alert('¡Gracias por contactarnos! Nos pondremos en contacto pronto.');
+            event.target.reset();
+        }
+
+        // Cerrar modal con ESC
+        document.addEventListener('keydown', function(event) {
+            if (event.key === 'Escape') {
+                cerrarModal();
+            }
+        });
+    </script>
+</body>
+</html>
+

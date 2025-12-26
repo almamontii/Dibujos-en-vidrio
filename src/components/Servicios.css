@@ -1,0 +1,129 @@
+.servicios {
+  padding: 5rem 2rem;
+  background-color: #F5F1E9;
+}
+
+.servicios-container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.servicios-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 2.5rem;
+  font-weight: 400;
+  text-align: center;
+  margin-bottom: 1rem;
+  color: #2a2a2a;
+  text-transform: lowercase;
+}
+
+.servicios-subtitle {
+  font-size: 1rem;
+  text-align: center;
+  color: #666;
+  margin-bottom: 3rem;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.servicios-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 2rem;
+}
+
+.servicio-card {
+  background-color: #D9D5CC;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.servicio-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+}
+
+.servicio-image {
+  width: 100%;
+  height: 300px;
+  overflow: hidden;
+  background-color: #e0e0e0;
+}
+
+.servicio-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.servicio-placeholder {
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, #4a4a4a 0%, #3a3a3a 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #aaa;
+  font-size: 0.9rem;
+  text-align: center;
+  padding: 1rem;
+}
+
+.servicio-content {
+  padding: 2rem;
+}
+
+.servicio-titulo {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.5rem;
+  font-weight: 400;
+  margin-bottom: 1rem;
+  color: #2a2a2a;
+  text-transform: lowercase;
+}
+
+.servicio-descripcion {
+  font-size: 0.95rem;
+  color: #666;
+  line-height: 1.7;
+}
+
+@media (max-width: 768px) {
+  .servicios {
+    padding: 3rem 1.5rem;
+  }
+
+  .servicios-title {
+    font-size: 2rem;
+  }
+
+  .servicios-subtitle {
+    font-size: 0.9rem;
+  }
+
+  .servicios-grid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+
+  .servicio-image {
+    height: 200px;
+  }
+
+  .servicio-content {
+    padding: 1.5rem;
+  }
+
+  .servicio-titulo {
+    font-size: 1.3rem;
+  }
+
+  .servicio-descripcion {
+    font-size: 0.9rem;
+  }
+}
+
