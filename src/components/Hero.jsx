@@ -4,7 +4,7 @@ function Hero() {
   return (
     <section className="hero">
       <div className="hero-image">
-        <img src="/images/hero-home.jpg" alt="Vidriera de bienvenida" />
+        <img src={`${import.meta.env.BASE_URL}images/hero-home.jpg`} alt="Vidriera de bienvenida" />
       </div>
       <div className="hero-content">
         <h1 className="hero-title">dale vida a tu local</h1>

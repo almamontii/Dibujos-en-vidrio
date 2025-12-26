@@ -6,25 +6,25 @@ function Servicios() {
       id: 1,
       titulo: 'diseños personalizados',
       descripcion: 'Creamos diseños únicos adaptados a la identidad de tu marca y las necesidades de tu negocio. Trabajamos junto a vos para plasmar tu visión en la vidriera.',
-      imagen: '/images/servicio-disenos-personalizados.jpg'
+      imagen: `${import.meta.env.BASE_URL}images/servicio-disenos-personalizados.jpg`
     },
     {
       id: 2,
       titulo: 'decoración estacional',
       descripcion: 'Actualizamos tu vidriera según las temporadas y festividades. Mantenemos tu local siempre actualizado y atractivo para tus clientes.',
-      imagen: '/images/servicio-decoracion-estacional.jpg'
+      imagen: `${import.meta.env.BASE_URL}images/servicio-decoracion-estacional.jpg`
     },
     {
       id: 3,
       titulo: 'promociones y ofertas',
       descripcion: 'Destacamos tus promociones y ofertas especiales de manera creativa. Aumentamos la visibilidad de tus campañas comerciales. También trabajamos pizarras.',
-      imagen: '/images/servicio-promociones-ofertas.jpg'
+      imagen: `${import.meta.env.BASE_URL}images/servicio-promociones-ofertas.jpg`
     },
     {
       id: 4,
       titulo: 'eventos especiales',
       descripcion: 'Para inauguraciones, aniversarios, lanzamientos de productos o agregarle una chispa al día a día.',
-      imagen: '/images/servicio-eventos-especiales.jpg'
+      imagen: `${import.meta.env.BASE_URL}images/servicio-eventos-especiales.jpg`
     }
   ]
 

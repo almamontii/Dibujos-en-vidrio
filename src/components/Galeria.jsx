@@ -8,7 +8,7 @@ function Galeria() {
 
   // Placeholder para trabajos - reemplazar después con las fotos reales
   const trabajos = [
-    { id: 1, imagenes: ['/images/juvenil-1.jpg', '/images/juvenil-2.jpg'], nombre: 'La juvenil- casa de pastas' }
+    { id: 1, imagenes: [`${import.meta.env.BASE_URL}images/juvenil-1.jpg`, `${import.meta.env.BASE_URL}images/juvenil-2.jpg`], nombre: 'La juvenil- casa de pastas' }
   ]
 
   const abrirModal = (trabajo) => {
