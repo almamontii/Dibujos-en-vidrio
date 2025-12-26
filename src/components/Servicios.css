@@ -10,16 +10,15 @@
 
 .servicios-title {
   font-family: 'Playfair Display', serif;
-  font-size: 2.5rem;
+  font-size: 3rem;
   font-weight: 400;
   text-align: center;
   margin-bottom: 1rem;
   color: #2a2a2a;
-  text-transform: lowercase;
 }
 
 .servicios-subtitle {
-  font-size: 1rem;
+  font-size: 1.2em;
   text-align: center;
   color: #666;
   margin-bottom: 3rem;
@@ -35,7 +34,7 @@
 }
 
 .servicio-card {
-  background-color: #D9D5CC;
+  background-color: #ffffff;
   border-radius: 8px;
   overflow: hidden;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
@@ -79,15 +78,14 @@
 
 .servicio-titulo {
   font-family: 'Playfair Display', serif;
-  font-size: 1.5rem;
+  font-size: 1.8rem;
   font-weight: 400;
   margin-bottom: 1rem;
   color: #2a2a2a;
-  text-transform: lowercase;
 }
 
 .servicio-descripcion {
-  font-size: 0.95rem;
+  font-size: 1.2em;
   color: #666;
   line-height: 1.7;
 }
@@ -98,11 +96,11 @@
   }
 
   .servicios-title {
-    font-size: 2rem;
+    font-size: 2.5rem;
   }
 
   .servicios-subtitle {
-    font-size: 0.9rem;
+    font-size: 1.1em;
   }
 
   .servicios-grid {
@@ -119,11 +117,11 @@
   }
 
   .servicio-titulo {
-    font-size: 1.3rem;
+    font-size: 1.5rem;
   }
 
   .servicio-descripcion {
-    font-size: 0.9rem;
+    font-size: 1.1em;
   }
 }
 

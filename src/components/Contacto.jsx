@@ -4,9 +4,10 @@ function Contacto() {
   return (
     <section id="contacto" className="contacto">
       <div className="contacto-container">
-        <h2 className="contacto-title">contactanos</h2>
+        <h2 className="contacto-title">Contactanos</h2>
         <p className="contacto-subtitle">
-          ¿Querés transformar la vidriera de tu local? Contactanos y te ayudamos a hacerlo realidad.
+          ¿Querés transformar la vidriera de tu local?<br />
+          Contactanos y te ayudamos a hacerlo realidad.
         </p>
         <div className="contacto-content">
           <div className="contacto-info">
@@ -16,7 +17,7 @@ function Contacto() {
               <div className="contacto-dato">
                 <span className="contacto-icon">✉️</span>
                 <div>
-                  <p className="contacto-dato-valor">alma.monti.nunez@gmail.com</p>
+                  <a href="mailto:alma.monti.nunez@gmail.com" className="contacto-dato-valor">alma.monti.nunez@gmail.com</a>
                 </div>
               </div>
             </div>

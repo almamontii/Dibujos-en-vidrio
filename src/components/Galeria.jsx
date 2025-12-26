@@ -72,7 +72,7 @@ function Galeria() {
   return (
     <section className="galeria">
       <div className="galeria-container">
-        <h2 className="galeria-title">nuestros trabajos</h2>
+        <h2 className="galeria-title">Nuestros trabajos</h2>
         <p className="galeria-subtitle">
           Algunos de los locales que confiaron en nosotros
         </p>
