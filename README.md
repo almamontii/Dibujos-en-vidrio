@@ -6,6 +6,8 @@ Sitio web para servicios de dibujos en vidrieras para locales comerciales.
 
 El sitio está disponible en: https://almamontii.github.io/Dibujos-en-vidrio/
 
+Última actualización: 26 de diciembre de 2025
+
 ## Estructura del Proyecto
 
 - **Hero**: Sección de bienvenida con imagen grande
