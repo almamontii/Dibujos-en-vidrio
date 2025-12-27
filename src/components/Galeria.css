@@ -136,6 +136,7 @@
   border: none;
   color: #ffffff;
   font-size: 3rem;
+  font-weight: bold;
   cursor: pointer;
   width: 50px;
   height: 50px;
@@ -144,6 +145,7 @@
   justify-content: center;
   border-radius: 50%;
   transition: background-color 0.3s ease;
+  line-height: 1;
 }
 
 .modal-nav:hover {
@@ -251,17 +253,26 @@
   }
 
   .modal-nav {
-    font-size: 2rem;
-    width: 40px;
-    height: 40px;
+    font-size: 3rem;
+    font-weight: bold;
+    width: 55px;
+    height: 55px;
+    background: rgba(255, 255, 255, 0.4);
+    z-index: 1001;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+  }
+
+  .modal-nav:hover,
+  .modal-nav:active {
+    background: rgba(255, 255, 255, 0.6);
   }
 
   .modal-nav-prev {
-    left: 10px;
+    left: 5px;
   }
 
   .modal-nav-next {
-    right: 10px;
+    right: 5px;
   }
 
   .modal-placeholder {

@@ -147,14 +147,14 @@ function Galeria() {
                         onClick={() => cambiarImagen('anterior')}
                         aria-label="Imagen anterior"
                       >
-                        ‹
+                        ←
                       </button>
                       <button 
                         className="modal-nav modal-nav-next" 
                         onClick={() => cambiarImagen('siguiente')}
                         aria-label="Imagen siguiente"
                       >
-                        ›
+                        →
                       </button>
                     </>
                   )}
