@@ -1,10 +1,12 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import './Galeria.css'
 
 function Galeria() {
   const [modalAbierto, setModalAbierto] = useState(false)
   const [imagenSeleccionada, setImagenSeleccionada] = useState(null)
   const [indiceActual, setIndiceActual] = useState(0)
+  const touchStartX = useRef(null)
+  const touchEndX = useRef(null)
 
   // Placeholder para trabajos - reemplazar después con las fotos reales
   const trabajos = [
@@ -39,6 +41,36 @@ function Galeria() {
     }
     
     setIndiceActual(nuevoIndice)
+  }
+
+  // Distancia mínima de swipe (píxeles)
+  const minSwipeDistance = 50
+
+  const onTouchStart = (e) => {
+    touchEndX.current = null
+    touchStartX.current = e.targetTouches[0].clientX
+  }
+
+  const onTouchMove = (e) => {
+    touchEndX.current = e.targetTouches[0].clientX
+  }
+
+  const onTouchEnd = () => {
+    if (!touchStartX.current || !touchEndX.current) return
+    
+    const distance = touchStartX.current - touchEndX.current
+    const isLeftSwipe = distance > minSwipeDistance
+    const isRightSwipe = distance < -minSwipeDistance
+
+    if (isLeftSwipe) {
+      cambiarImagen('siguiente')
+    } else if (isRightSwipe) {
+      cambiarImagen('anterior')
+    }
+    
+    // Reset
+    touchStartX.current = null
+    touchEndX.current = null
   }
 
   // Soporte para teclado
@@ -126,12 +158,18 @@ function Galeria() {
                       </button>
                     </>
                   )}
-                  <div className="modal-image-container">
+                  <div 
+                    className="modal-image-container"
+                    onTouchStart={tieneMultiplesImagenes ? onTouchStart : undefined}
+                    onTouchMove={tieneMultiplesImagenes ? onTouchMove : undefined}
+                    onTouchEnd={tieneMultiplesImagenes ? onTouchEnd : undefined}
+                  >
                     {imagenesDelTrabajo.length > 0 && indiceActual < imagenesDelTrabajo.length ? (
                       <img 
                         src={imagenesDelTrabajo[indiceActual]} 
                         alt={`${imagenSeleccionada.nombre} - Imagen ${indiceActual + 1}`} 
                         className="modal-image"
+                        draggable={false}
                       />
                     ) : (
                       <div className="modal-placeholder">
