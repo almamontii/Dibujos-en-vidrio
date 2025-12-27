@@ -16,6 +16,8 @@
   text-align: center;
   margin-bottom: 0.5rem;
   color: #ffffff;
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
 }
 
 .contacto-subtitle {
@@ -44,10 +46,12 @@
 
 .contacto-info-title {
   font-family: 'Playfair Display', serif;
-  font-size: 1.5rem;
+  font-size: 2rem;
   font-weight: 400;
   margin-bottom: 0.5rem;
   color: #ffffff;
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
 }
 
 .contacto-cotizacion {
@@ -106,6 +110,8 @@
 
   .contacto-subtitle {
     font-size: 0.9em;
+    max-width: 100%;
+    padding: 0 0.5rem;
   }
 
   .contacto-content {

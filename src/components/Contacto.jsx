@@ -11,7 +11,7 @@ function Contacto() {
         </p>
         <div className="contacto-content">
           <div className="contacto-info">
-            <h3 className="contacto-info-title">Información de contacto</h3>
+            <h3 className="contacto-info-title">Contacto</h3>
             <p className="contacto-cotizacion">Para una cotización contactarse a este correo</p>
             <div className="contacto-datos">
               <div className="contacto-dato">
@@ -29,4 +29,6 @@ function Contacto() {
 }
 
 export default Contacto
+
+
 
