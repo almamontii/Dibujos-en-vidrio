@@ -102,6 +102,7 @@
 @media (max-width: 768px) {
   .contacto {
     padding: 2rem 1.5rem;
+    padding-bottom: 2rem;
   }
 
   .contacto-title {
